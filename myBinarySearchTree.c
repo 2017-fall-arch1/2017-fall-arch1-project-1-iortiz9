@@ -36,6 +36,26 @@ myNode *insert_node(myNode *np, char *data){
   
 }
 
+int search_node(myNode *np, char *data){
+
+  if(strcmp(np->data,data)==0){
+    printf("looking for %s returned true. \n",data);
+    return 1;
+  }
+  else if (strcmp(np->data,data)<0){
+   search_node(np->left,data);
+  }
+
+
+  else if (strcmp(np->data,data)>0){
+    search_node(np->right,data);
+  }
+  else{
+    printf("not Found\n");
+    return 0;
+  }
+}
+
 void bst_print(myNode *np){
 
   if(np==NULL){

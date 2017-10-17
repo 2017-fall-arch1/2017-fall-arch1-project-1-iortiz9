@@ -1,5 +1,6 @@
-#include <stdio,h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "binarySearchTree.h"
 
 
@@ -12,20 +13,49 @@ myNode *node_alloc(){
 
 }
 
-myNode* insert_node(myNode *np, char *data){
+myNode *insert_node(myNode *np, char *data){
 
+  myNode *temp;
   if(np == NULL){
 
-    return node_alloc();
+    temp = node_alloc();
+    temp->data = data;
+  
+    return temp;
   }
-  else if (strcmp(data, np ->name)<0){
-    np->left=insert_node(data,np->left);
+
+
+  else if (strcmp(np->data,data)<0){
+    np->left=insert_node(np->left,data);
   }
-  else if(strcmp(data,np->name)>0){
-    np->right=insert_node(data,np->right);
+  else if(strcmp(np->data,data)>0){
+    np->right=insert_node(np->right,data);
   }
   else
     return np;
+  
+}
+
+void bst_print(myNode *np){
+
+  if(np==NULL){
+
+    return;
+    
+  }
+
+
+  if(np->left != NULL)
+
+    bst_print(np->left);
+    
+    printf("Data Found: %s \n",np->data);
+  
+ if (np->right !=NULL)
+   
+   bst_print(np->right);
+     
+
   
 }
 
@@ -34,4 +64,5 @@ myNode* insert_node(myNode *np, char *data){
 
 
 
-  
+
+

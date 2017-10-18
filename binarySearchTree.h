@@ -11,9 +11,9 @@ typedef struct myNode{
 
 }myNode;
 
-void *node_alloc();
+myNode *node_alloc();
 
-void insert_node(myNode *np, char data);
+myNode *insert_node(myNode *np, char *data);
 
 void bst_print(myNode *np);
 
